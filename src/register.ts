@@ -1,15 +1,20 @@
+/**
+ * This is mostly copied from https://github.com/open-telemetry/opentelemetry-js-contrib/blob/b520d048465d9b3dfdf275976010c989d2a78a2c/metapackages/auto-instrumentations-node/src/register.ts#L1
+ */
 import * as opentelemetry from "@opentelemetry/sdk-node";
 import { diag, DiagConsoleLogger } from "@opentelemetry/api";
 import {
   getNodeAutoInstrumentations,
   getResourceDetectors,
 } from "@opentelemetry/auto-instrumentations-node";
-import { CustomSampler, getLogLevelFromEnv } from "./utils.js";
+import { getLogLevelFromEnv } from "./utils.js";
+import { CustomSampler } from "./CustomSampler.js";
 
 diag.setLogger(new DiagConsoleLogger(), getLogLevelFromEnv());
 
 const sdk = new opentelemetry.NodeSDK({
   instrumentations: getNodeAutoInstrumentations({
+    // we pass custom config to the graphql plugin to reduce the number of spans created
     "@opentelemetry/instrumentation-graphql": {
       mergeItems: true,
       ignoreTrivialResolveSpans: true,
@@ -17,6 +22,7 @@ const sdk = new opentelemetry.NodeSDK({
     },
   }),
   resourceDetectors: getResourceDetectors(),
+  // we use our custom sampler to filter out useless traces
   sampler: new CustomSampler(),
 });
 

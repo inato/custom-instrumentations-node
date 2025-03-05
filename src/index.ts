@@ -1,1 +1,1 @@
-export { CustomSampler } from "./utils.js";
+export { CustomSampler } from "./CustomSampler.js";

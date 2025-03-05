@@ -1,6 +1,6 @@
 {
   "name": "@inato/custom-instrumentations-node",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Inato custom OpenTelementry instrumentation for NodeJS",
   "publishConfig": {
     "access": "public"

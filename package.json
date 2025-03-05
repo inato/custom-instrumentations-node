@@ -13,7 +13,9 @@
   },
   "type": "module",
   "scripts": {
-    "build": "tsc -p ."
+    "build": "tsc -p .",
+    "changeset-version": "changeset version",
+    "changeset-publish": "pnpm build && changeset publish"
   },
   "dependencies": {
     "@opentelemetry/sdk-node": "0.57.2",
@@ -23,7 +25,8 @@
   },
   "devDependencies": {
     "typescript": "5.8.2",
-    "@types/node": "22.13.9"
+    "@types/node": "22.13.9",
+    "@changesets/cli": "2.28.1"
   },
   "author": "Inato",
   "license": "ISC",

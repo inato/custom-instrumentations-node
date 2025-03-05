@@ -6,7 +6,7 @@ COPY . .
 
 RUN corepack enable
 
-RUN pnpm install
+RUN pnpm install --shamefully-hoist
 
 RUN pnpm build
 

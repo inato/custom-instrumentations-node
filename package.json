@@ -1,0 +1,31 @@
+{
+  "name": "@inato/custom-instrumentations-node",
+  "version": "0.1.0",
+  "description": "Inato custom OpenTelementry instrumentation for NodeJS",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "exports": {
+    ".": "./build/index.js",
+    "./register": "./build/register.js"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p ."
+  },
+  "dependencies": {
+    "@opentelemetry/sdk-node": "0.57.2",
+    "@opentelemetry/auto-instrumentations-node": "0.56.1",
+    "@opentelemetry/api": "1.9.0",
+    "@opentelemetry/sdk-trace-node": "1.30.1"
+  },
+  "devDependencies": {
+    "typescript": "5.8.2",
+    "@types/node": "22.13.9"
+  },
+  "author": "Inato",
+  "license": "ISC",
+  "packageManager": "pnpm@8.12.0+sha1.7134f9b8d0b70bc7a1954f47af52123cd2b2acce"
+}

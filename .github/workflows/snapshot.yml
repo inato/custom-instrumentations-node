@@ -4,9 +4,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
-permissions: 
-  actions: write       # Necessary to cancel workflow executions
-  checks: write        # Necessary to write reports
+permissions:
+  actions: write # Necessary to cancel workflow executions
+  checks: write # Necessary to write reports
   pull-requests: write # Necessary to comment on PRs
   contents: read
   packages: write
@@ -24,4 +24,4 @@ jobs:
         run: pnpm build
       - name: Create snapshot
         id: snapshot
-        run: pnpx pkg-pr-new@0.0.24 publish --pnpm --comment=off ./packages/*
+        run: pnpx pkg-pr-new@0.0.24 publish --pnpm --comment=off

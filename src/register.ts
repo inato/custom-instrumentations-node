@@ -19,11 +19,13 @@ const sdk = new opentelemetry.NodeSDK({
       mergeItems: true,
       ignoreTrivialResolveSpans: true,
       depth: 3,
+      allowValues: true,
     },
   }),
   resourceDetectors: getResourceDetectors(),
   // we use our custom sampler to filter out useless traces
   sampler: new CustomSampler(),
+  
 });
 
 try {

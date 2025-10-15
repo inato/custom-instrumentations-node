@@ -5,6 +5,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inato/custom-instrumentations-node"
+  },
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "exports": {

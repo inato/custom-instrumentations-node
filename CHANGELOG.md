@@ -1,5 +1,11 @@
 # @inato/custom-instrumentations-node
 
+## 0.2.0
+
+### Minor Changes
+
+- aff509a: Use OIDC for publishing
+
 ## 0.1.2
 
 ### Patch Changes

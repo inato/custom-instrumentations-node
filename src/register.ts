@@ -20,6 +20,10 @@ const sdk = new opentelemetry.NodeSDK({
       ignoreTrivialResolveSpans: true,
       depth: 3,
     },
+    // we ignore self telemetry for the calls to the collector from the span producers
+    "@opentelemetry/instrumentation-undici": {
+      ignoreRequestHook: (req) => /\/v1\/(metrics|traces|logs)/.test(req.path)
+    }
   }),
   resourceDetectors: getResourceDetectors(),
   // we use our custom sampler to filter out useless traces

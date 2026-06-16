@@ -1,5 +1,11 @@
 # @inato/custom-instrumentations-node
 
+## 0.3.0
+
+### Minor Changes
+
+- 5cf43d2: Ignore undici calls to /v1/(metrics|traces|logs)
+
 ## 0.2.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @inato/custom-instrumentations-node
 
+## 0.4.0
+
+### Minor Changes
+
+- f989f3d: Bump opentelemetry dependencies
+
 ## 0.3.0
 
 ### Minor Changes

@@ -2,33 +2,21 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    ":dependencyDashboard",
-    ":semanticCommits"
+    ":dependencyDashboard"
   ],
   "timezone": "Europe/Paris",
-  "schedule": ["before 6am on monday"],
   "rangeStrategy": "pin",
   "labels": ["dependencies"],
   "packageRules": [
     {
-      "description": "Group all OpenTelemetry packages so they bump in lockstep",
-      "matchPackageNames": ["@opentelemetry/**"],
-      "groupName": "opentelemetry packages"
-    },
-    {
-      "description": "Group GitHub Actions updates",
-      "matchManagers": ["github-actions"],
-      "groupName": "github-actions"
-    },
-    {
-      "description": "Keep pnpm version in sync with packageManager field",
-      "matchDepNames": ["pnpm"],
-      "matchManagers": ["npm"],
-      "rangeStrategy": "pin"
+      "description": "Disable all routine updates — only security fixes raise PRs",
+      "matchPackageNames": ["*"],
+      "enabled": false
     }
   ],
-  "lockFileMaintenance": {
+  "vulnerabilityAlerts": {
     "enabled": true,
-    "schedule": ["before 6am on monday"]
-  }
+    "labels": ["security"]
+  },
+  "osvVulnerabilityAlerts": true
 }

@@ -1,0 +1,45 @@
+name: Add changeset to Renovate PRs
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  changeset:
+    name: Add changeset
+    # Only run on Renovate's own branches, excluding lock-file maintenance
+    # (those only touch pnpm-lock.yaml, which isn't published, so no release is needed)
+    if: ${{ github.actor == 'renovate[bot]' && startsWith(github.head_ref, 'renovate/') && github.head_ref != 'renovate/lock-file-maintenance' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Add patch changeset if missing
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          # Skip if the PR already contains a changeset (any .md besides README)
+          if find .changeset -maxdepth 1 -name '*.md' ! -name 'README.md' | grep -q .; then
+            echo "Changeset already present — nothing to do."
+            exit 0
+          fi
+          file=".changeset/renovate-${{ github.event.pull_request.number }}.md"
+          {
+            echo '---'
+            echo '"@inato/custom-instrumentations-node": patch'
+            echo '---'
+            echo
+            echo "${PR_TITLE:-Update dependencies}"
+          } > "$file"
+
+      - name: Commit changeset
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: add changeset for dependency update"
+          file_pattern: ".changeset/*.md"

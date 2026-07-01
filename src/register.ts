@@ -23,6 +23,9 @@ const sdk = new opentelemetry.NodeSDK({
     // we ignore self telemetry for the calls to the collector from the span producers
     "@opentelemetry/instrumentation-undici": {
       ignoreRequestHook: (req) => /\/v1\/(metrics|traces|logs)/.test(req.path)
+    },
+    "@opentelemetry/instrumentation-runtime-node": {
+      enabled: false
     }
   }),
   resourceDetectors: getResourceDetectors(),

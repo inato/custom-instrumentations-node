@@ -1,5 +1,15 @@
 # @inato/custom-instrumentations-node
 
+## 0.5.0
+
+### Minor Changes
+
+- c550c3f: Disable @opentelemetry/instrumentation-runtime-node
+
+### Patch Changes
+
+- d357b29: Update pnpm to v10 [SECURITY]
+
 ## 0.4.0
 
 ### Minor Changes

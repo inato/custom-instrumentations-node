@@ -1,0 +1,5 @@
+allowBuilds:
+  protobufjs: true
+overrides:
+  picomatch@2: "2.3.2"
+  read-yaml-file@1: "2.1.0"

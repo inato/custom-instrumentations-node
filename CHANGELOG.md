@@ -1,5 +1,11 @@
 # @inato/custom-instrumentations-node
 
+## 0.5.1
+
+### Patch Changes
+
+- 9f1f97b: Update pnpm to v11 [SECURITY]
+
 ## 0.5.0
 
 ### Minor Changes

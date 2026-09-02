@@ -40,5 +40,5 @@
   },
   "author": "Inato",
   "license": "ISC",
-  "packageManager": "pnpm@11.8.0"
+  "packageManager": "pnpm@11.11.0"
 }

@@ -57,6 +57,9 @@ jobs:
       - name: Read version
         run: echo VERSION=$(cat package.json | jq -r '.version') >> $GITHUB_ENV
 
+      - name: Read Node version
+        run: echo NODE_VERSION=$(cat .node-version) >> $GITHUB_ENV
+
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v5
@@ -93,7 +96,9 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          build-args: version=${{ env.VERSION }}
+          build-args: |
+            version=${{ env.VERSION }}
+            NODE_VERSION=${{ env.NODE_VERSION }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=local,src=/tmp/.buildx-cache

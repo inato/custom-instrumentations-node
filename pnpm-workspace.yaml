@@ -1,2 +1,8 @@
 allowBuilds:
   protobufjs: true
+
+# Flat node_modules layout, required by the OpenTelemetry operator auto-instrumentation image
+# (node_modules is copied into /autoinstrumentation and resolved from there).
+# Kept here rather than as a CLI flag so that pnpm's pre-run dependency check
+# (verifyDepsBeforeRun, default "install" since pnpm 11) sees the same setting as the install.
+shamefullyHoist: true

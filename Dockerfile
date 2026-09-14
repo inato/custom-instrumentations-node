@@ -6,7 +6,10 @@ COPY . .
 
 RUN corepack enable
 
-RUN pnpm install --shamefully-hoist
+# Non-interactive: never prompt (e.g. for a node_modules purge) inside the build
+ENV CI=true
+
+RUN pnpm install
 
 RUN pnpm build
 

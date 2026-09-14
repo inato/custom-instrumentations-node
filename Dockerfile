@@ -1,5 +1,7 @@
 # inspired from https://github.com/open-telemetry/opentelemetry-operator/blob/main/autoinstrumentation/nodejs/Dockerfile
-FROM node:22 AS build
+
+ARG NODE_VERSION
+FROM node:${NODE_VERSION} AS build
 
 WORKDIR /operator-build
 COPY . .

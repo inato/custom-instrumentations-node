@@ -62,7 +62,7 @@ Renovate is configured for security fixes only; routine version bumps are disabl
 
 ## Development
 
-Requirements: Node.js 22+ and pnpm (the version is pinned in `package.json` `packageManager`; `corepack enable` picks it up).
+Requirements: the Node.js version in [.node-version](.node-version) and pnpm (the version is pinned in `package.json` `packageManager`; `corepack enable` picks it up).
 
 ```shell
 pnpm install
